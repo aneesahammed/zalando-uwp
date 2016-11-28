@@ -10,10 +10,10 @@ This is simple Universal Windows App (Unofficial) built with [Zalando Shop API](
 * Loading animation with busy indicator
 
 ##Launch
-![alt tag](https://dl.dropboxusercontent.com/u/3085879/Works/gihub/zalando/2016-11-28_11-51-40.gif)
+![alt tag](https://dl.dropboxusercontent.com/u/3085879/Works/gihub/zalando/file1.gif)
 
 ##Filter
-![alt tag](https://dl.dropboxusercontent.com/u/3085879/Works/gihub/zalando/2016-11-28_11-59-38.gif)
+![alt tag](https://dl.dropboxusercontent.com/u/3085879/Works/gihub/zalando/file2.gif)
 
 
 * The project uses the Zalando app icon for demonstration purposes only.
