@@ -9,11 +9,6 @@ using ZalandoAPIDemo.Models;
 
 namespace ZalandoAPIDemo.Services
 {
-    public interface IDataService
-    {
-        Task<RootObject> GetData(string query,bool isResetRequested=false);
-    }
-
     public class DataService : IDataService
     {
         private string _language;

@@ -1,5 +1,8 @@
+using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Template10.Mvvm;
 using Template10.Services.NavigationService;
 using Windows.UI.Xaml.Navigation;
@@ -10,6 +13,7 @@ namespace ZalandoAPIDemo.ViewModels
     public class DetailPageViewModel : ViewModelBase
     {
         #region <-PrivateMembers->
+        private string _shopUrl;
         #endregion
 
         #region <-Properties->
@@ -50,6 +54,13 @@ namespace ZalandoAPIDemo.ViewModels
         }
         #endregion
 
+        #region <-Commands->
+        public ICommand GotoSelectedArticleCommand
+        {
+            get { return new RelayCommand(GotoSelectedArticleCommandExecute); }
+        }
+        #endregion
+
         #region <-Constructor->
         public DetailPageViewModel()
         {
@@ -63,15 +74,23 @@ namespace ZalandoAPIDemo.ViewModels
         #region <-PublicMethods->
         public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> suspensionState)
         {
-            Value = (suspensionState.ContainsKey(nameof(Value))) ? suspensionState[nameof(Value)]?.ToString() : parameter?.ToString();
-            await Task.CompletedTask;
+            try
+            {
+                Value = (suspensionState.ContainsKey(nameof(Value))) ? suspensionState[nameof(Value)]?.ToString() : parameter?.ToString();
+                await Task.CompletedTask;
 
 
-            var content = parameter as Models.Content;
+                var content = parameter as Models.Content;
 
-            BrandImageUrl = content.Brand.LogoUrl;
-            Attributes = new List<Models.Attribute>(content.Attributes);
-            MediaImages = new List<Models.Image>(content.Media.Images);
+                BrandImageUrl = content.Brand.LogoUrl;
+                Attributes = new List<Models.Attribute>(content.Attributes);
+                MediaImages = new List<Models.Image>(content.Media.Images);
+                _shopUrl = content.ShopUrl;
+            }
+            catch (Exception)
+            {
+                //log exception
+            }
         }
 
         public override async Task OnNavigatedFromAsync(IDictionary<string, object> suspensionState, bool suspending)
@@ -89,6 +108,25 @@ namespace ZalandoAPIDemo.ViewModels
             await Task.CompletedTask;
         }
         #endregion
+
+        #region <-CommandMethods->
+        private async void GotoSelectedArticleCommandExecute()
+        {
+            try
+            {
+                if(!string.IsNullOrEmpty(_shopUrl))
+                {
+                    var uri = new Uri(_shopUrl);
+
+                    await Windows.System.Launcher.LaunchUriAsync(uri);
+                }
+            }
+            catch (System.Exception)
+            {
+                //log exception
+            }
+        }
+        #endregion  
 
         #region <-PrivateMethods->
         #endregion

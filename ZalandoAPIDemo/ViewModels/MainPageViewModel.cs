@@ -134,39 +134,59 @@ namespace ZalandoAPIDemo.ViewModels
             NavigationService.Navigate(typeof(Views.SettingsPage), 2);
         #endregion
 
-        #region <-CommandMethods->       
-
+        #region <-CommandMethods->
         private async void OptionSelectionChangeCommandExecute(object o)
         {
-            System.Diagnostics.Debug.WriteLine(o.ToString());
-            await GetMoreArticleData();
+            try
+            {
+                System.Diagnostics.Debug.WriteLine(o.ToString());
+                await GetMoreArticleData();
+            }
+            catch (Exception)
+            {
+                //log exception
+            }
         }
 
         private void ItemSelectedCommandExecute(object o)
         {
-            Content content;
-            if (o is ItemClickEventArgs)
-                content = ((o as ItemClickEventArgs).ClickedItem) as Content;
-            else
-                content = o as Content;
+            try
+            {
+                Content content;
+                if (o is ItemClickEventArgs)
+                    content = ((o as ItemClickEventArgs).ClickedItem) as Content;
+                else
+                    content = o as Content;
 
-            if (content != null)
-                NavigationService.Navigate(typeof(Views.DetailPage), content);
-
+                if (content != null)
+                    NavigationService.Navigate(typeof(Views.DetailPage), content);
+            }
+            catch (Exception)
+            {
+                //log exception
+            }
         }
         #endregion
 
         #region <-PrivateMethods->
         private void OnOptionSelectionChange()
         {
-            //reset PageIndex=1,when reload is needed.
-            _isResetRequired = true;
+            try
+            {
+                //reset PageIndex=1,when reload is needed.
+                _isResetRequired = true;
 
-            ContentCollection.Clear();
-            ContentCollection = null;
+                ContentCollection.Clear();
+                ContentCollection = null;
 
-            ContentCollection = new IncrementalLoadingCollection<Content>((cancellationToken, count)
-                => Task.Run(GetMoreArticleData, cancellationToken));
+                ContentCollection = new IncrementalLoadingCollection<Content>((cancellationToken, count)
+                    => Task.Run(GetMoreArticleData, cancellationToken));
+            }
+            catch (Exception)
+            {
+                //log exception
+            }
+           
         }
 
         private async Task<ObservableCollection<Content>> GetMoreArticleData()
