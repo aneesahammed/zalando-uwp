@@ -16,4 +16,4 @@ This is simple Universal Windows App (Unofficial) built with [Zalando Shop API](
 ![alt tag](https://dl.dropboxusercontent.com/u/3085879/Works/gihub/zalando/file2.gif)
 
 
-* The project uses the Zalando app icon for demonstration purposes only.
+* The project uses the Zalando icons for demonstration purposes only.
