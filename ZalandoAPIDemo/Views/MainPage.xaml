@@ -6,9 +6,9 @@
       xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
       xmlns:controls="using:Template10.Controls"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:helperControls="using:UwpHelpers.Controls.ListControls"
       xmlns:local="using:ZalandoAPIDemo.Views"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
       xmlns:vm="using:ZalandoAPIDemo.ViewModels"
       DataContext="{Binding Source={StaticResource Locator},
                             Path=MainPageVm}"
@@ -140,24 +140,22 @@
 
 
 
-            <toolkit:AdaptiveGridView Name="adaptiveGridView"
-                                      Grid.Row="1"
-                                      DesiredWidth="204"
-                                      IsItemClickEnabled="True"
-                                      ItemHeight="353"
-                                      ItemTemplate="{StaticResource PhotosTemplate}"
-                                      ItemsSource="{Binding Path=ContentCollection}"
-                                      OneRowModeEnabled="False"
-                                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                                      ScrollViewer.VerticalScrollMode="Disabled"
-                                      SelectionMode="Single">
+            <helperControls:AdaptiveGridView x:Name="adaptiveGridView"
+                                             Grid.Row="1"
+                                             IsItemClickEnabled="True"
+                                             ItemTemplate="{StaticResource PhotosTemplate}"
+                                             ItemsSource="{Binding Path=ContentCollection}"
+                                             MinItemHeight="303"
+                                             MinItemWidth="190"                                             
+                                             SelectionMode="Single">
                 <Interactivity:Interaction.Behaviors>
                     <Core:EventTriggerBehavior EventName="ItemClick">
                         <!--  CommandParameter="{Binding ElementName=adaptiveGridView, Path=SelectedItem}  -->
                         <Core:InvokeCommandAction Command="{Binding Path=ItemSelectedCommand, Mode=OneWay}" />
                     </Core:EventTriggerBehavior>
                 </Interactivity:Interaction.Behaviors>
-            </toolkit:AdaptiveGridView>
+            </helperControls:AdaptiveGridView>
+
         </Grid>
 
         <VisualStateManager.VisualStateGroups>
