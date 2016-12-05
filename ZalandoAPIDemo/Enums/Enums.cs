@@ -11,8 +11,8 @@ namespace ZalandoAPIDemo.Enums
     public enum CustomFilter
     {
         All,
-        Male,
-        Female,
+        Men,
+        Women,
         Kids,
     }
 

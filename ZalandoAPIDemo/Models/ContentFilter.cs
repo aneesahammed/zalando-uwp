@@ -79,9 +79,11 @@ namespace ZalandoAPIDemo.Models
                 {
                     case CustomFilter.All:                        
                         break;
-                    case CustomFilter.Male:
-                    case CustomFilter.Female:
-                        sb.Append($"&gender={option}");
+                    case CustomFilter.Men:
+                        sb.Append($"&gender={Enums.Gender.Male}");
+                        break;
+                    case CustomFilter.Women:
+                        sb.Append($"&gender={Enums.Gender.Female}");
                         break;
                     case CustomFilter.Kids:
                         sb.Append($"&ageGroup={option}");
