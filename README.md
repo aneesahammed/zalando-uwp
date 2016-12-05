@@ -6,7 +6,7 @@ This is simple Universal Windows App (Unofficial) built with [Zalando Shop API](
 * Can filter the articles and get detailed information about each article.
 * Articles are loaded using [IncrementalLoadingCollection](https://github.com/LanceMcCarthy/UwpProjects#incrementalloadingcollection)
 * App uses [Template 10](http://aka.ms/Template10) with MVVMLight framework
-* [AdaptiveGridView](https://github.com/Microsoft/UWPCommunityToolkit/tree/dev/Microsoft.Toolkit.Uwp.UI.Controls) is used as container for each article item.
+* [AdaptiveGridView](https://github.com/LanceMcCarthy/UwpProjects#adaptivegridview) is used as container for article items.
 * Loading animation with busy indicator
 
 ##Launch
