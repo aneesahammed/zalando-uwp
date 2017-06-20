@@ -1,5 +1,5 @@
 # ZalandoAPIDemo
-This is simple Universal Windows App (Unofficial) built with [Zalando Shop API](https://github.com/zalando/shop-api-documentation)
+Universal Windows App (Unofficial) built with [Zalando Shop API](https://github.com/zalando/shop-api-documentation)
 
 ##Features
 * On launch App fetches articles of page 1 with PageSize provided=20
