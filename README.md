@@ -1,4 +1,4 @@
-# ZalandoAPIDemo
+# Zalando-UWP
 Universal Windows App (Unofficial) built with [Zalando Shop API](https://github.com/zalando/shop-api-documentation)
 
 ##Features
